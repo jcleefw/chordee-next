@@ -31,22 +31,10 @@ interface Props {
   nrOfFrets: number
 }
 const BoardGraphicStrings: FC<Props> = ({ nrOfStrings, nrOfFrets }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    version="1.1"
-    width="100%"
-    height="100%"
-    stroke="black"
-    strokeWidth="1"
-    fill="white"
-    shapeRendering="geometricPrecision"
-    style={{ overflow: 'visible' }}
-  >
-    <g>
-      {times(nrOfStrings, stringLine(nrOfStrings))}
-      {range(1, nrOfFrets).map(fretLine(nrOfFrets, nrOfStrings))}
-    </g>
-  </svg>
+  <g>
+    {times(nrOfStrings, stringLine(nrOfStrings))}
+    {range(1, nrOfFrets).map(fretLine(nrOfFrets, nrOfStrings))}
+  </g>
 )
 
 export default BoardGraphicStrings
