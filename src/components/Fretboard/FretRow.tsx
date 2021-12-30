@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 import { fretboardHeight } from 'types/enums'
 import cx from 'classnames'
-import styles from './fretboard.module.scss'
 
 interface Props {
   boardHeight: fretboardHeight
@@ -23,10 +22,7 @@ export default ({
   const rowHeight = boardHeight / noOfStrings
 
   return (
-    <FretsRow
-      className={cx('fret-row', styles.fretRow)}
-      style={{ height: `${rowHeight}px` }}
-    >
+    <FretsRow className={cx('fret-row')} style={{ height: `${rowHeight}px` }}>
       {children}
     </FretsRow>
   )
