@@ -1,15 +1,17 @@
-// components/layout.js
 import React, { FC } from 'react'
-import { PageContainer, Wrapper } from 'components/atoms/Container'
+import { Wrapper } from 'components/atoms/Container'
 import Header from './Header'
+import styles from './layout.module.scss'
+import Footer from './Footer'
 
 const Layout: FC = ({ children }) => {
   return (
     <>
-      <Wrapper>
+      <Wrapper height="80vh">
         <Header />
-        <main>{children}</main>
+        <main className={styles.main}>{children}</main>
       </Wrapper>
+      <Footer />
     </>
   )
 }

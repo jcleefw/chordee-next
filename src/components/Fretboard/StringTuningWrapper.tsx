@@ -1,29 +1,43 @@
+import styled from 'styled-components'
 import React, { FC } from 'react'
 import { TuningShape } from 'types/tuning'
 import { reverse } from 'lodash'
-import styles from './fretboard.module.scss'
+import { stringifyNote } from 'utils/fretboard'
 
+const TuningDivWrapper = styled.div`
+  margin-top: 4px;
+`
+const TuningNotes = styled.div`
+  font-size: 0.9rem;
+  color: green;
+  font-family: 'Patrick Hand SC';
+  font-weight: bold;
+`
 interface Props {
   tuning: Array<TuningShape>
+  boardHeight: number
 }
 
 const tuningNotes = (tuning: TuningShape[]) => {
-  const array = tuning.map((row) => `${row.note}${row.octave}`.toUpperCase())
-  return reverse(array)
+  const stringArray = tuning.map((row) =>
+    stringifyNote(row, true).toUpperCase()
+  )
+  return reverse(stringArray)
 }
 
-const StringTuningWrapper: FC<Props> = ({ tuning }) => {
+const StringTuningWrapper: FC<Props> = ({ tuning, boardHeight }) => {
+  const y = boardHeight / tuning.length
   return (
     <foreignObject width="100%" height="100%">
-      <div className={styles.tuningDiveWrapper}>
+      <TuningDivWrapper>
         {tuningNotes(tuning).map((notes: string, index: number) => {
           return (
-            <div className={styles.tuningNotes} key={index}>
+            <TuningNotes style={{ height: y }} key={index}>
               {notes.toUpperCase()}
-            </div>
+            </TuningNotes>
           )
         })}
-      </div>
+      </TuningDivWrapper>
     </foreignObject>
   )
 }

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-const SvgHeader: FC = ({ children }) => (
+const SvgWrapper: FC = ({ children }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
@@ -16,4 +16,4 @@ const SvgHeader: FC = ({ children }) => (
   </svg>
 )
 
-export default SvgHeader
+export default SvgWrapper

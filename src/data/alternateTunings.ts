@@ -1,4 +1,4 @@
-import { AlternateTuningProps, musicNotes } from 'interfaces/tuning'
+import { AlternateTuningProps, musicNotes } from 'types/tuning'
 
 export const alternateTunings: AlternateTuningProps = {
   standard: {
@@ -50,13 +50,10 @@ export const alternateTunings: AlternateTuningProps = {
     tunings: [
       { note: musicNotes.A, octave: 4 },
       { note: musicNotes.D, octave: 4 },
-      { note: musicNotes.G, octave: 4},
+      { note: musicNotes.G, octave: 4 },
       { note: musicNotes.C, octave: 5 },
       { note: musicNotes.E, octave: 5 },
       { note: musicNotes.A, octave: 5 },
-    ]
-  }
+    ],
+  },
 }
-
-
-
