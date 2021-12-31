@@ -38,7 +38,11 @@ const FretboardPage: NextPage = () => {
     <PageContainer>
       <PageHeader setTuning={setTuning} setKey={setTonalKey} />
       <Section>
-        {!isEmpty(tonalKey) && (
+        {isEmpty(tonalKey) ? (
+          <ScalesDisplay>
+            Select tuning and keys to show highlighted notes on fret
+          </ScalesDisplay>
+        ) : (
           <ScalesDisplay>
             Notes on scale are: {decorateScaleNotes()}
           </ScalesDisplay>

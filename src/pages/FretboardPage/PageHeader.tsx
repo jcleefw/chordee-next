@@ -8,9 +8,11 @@ import { convertTonalScaleIfNeeded } from 'utils/tonalHelper'
 
 const Container = styled.div`
   margin-bottom: 1rem;
-  display: flex;
-  > .select {
-    width: 100%;
+`
+const FormGroup = styled.div`
+  width: 50%;
+  &:not(:first-child) {
+    padding-left: 0.5rem;
   }
 `
 
@@ -44,18 +46,26 @@ const PageHeader: FC<Props> = ({ setTuning, setKey }) => {
   }
 
   return (
-    <Container>
-      <Select
-        options={tuningOptions}
-        onChange={(e) => onTuningChange(e, setTuning)}
-        defaultValue={tuningOptions[0]}
-        className="select"
-      />
-      <Select
-        options={musicKey}
-        onChange={(e) => onKeyChange(e, setKey)}
-        className="select"
-      />
+    <Container className="flex">
+      <FormGroup className="form-group">
+        <label htmlFor="tuning">Tuning</label>
+        <Select
+          options={tuningOptions}
+          onChange={(e) => onTuningChange(e, setTuning)}
+          defaultValue={tuningOptions[0]}
+          className="select"
+          id="tuning"
+        />
+      </FormGroup>
+      <FormGroup className="form-group">
+        <label htmlFor="keyMajor">Key</label>
+        <Select
+          options={musicKey}
+          onChange={(e) => onKeyChange(e, setKey)}
+          className="select"
+          id="keyMajor"
+        />
+      </FormGroup>
     </Container>
   )
 }
