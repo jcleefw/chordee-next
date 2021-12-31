@@ -40,7 +40,12 @@ const FretBackground = styled.span`
 `
 const fretMarking = [3, 5, 7, 9, 12, 15, 17]
 
-export default ({ width, note, showOctave, index }: Props): ReactElement => {
+const FretContainer = ({
+  width,
+  note,
+  showOctave,
+  index,
+}: Props): ReactElement => {
   const fretString = stringifyNote(note, showOctave)
 
   return (
@@ -59,3 +64,5 @@ export default ({ width, note, showOctave, index }: Props): ReactElement => {
     </Fret>
   )
 }
+
+export default FretContainer

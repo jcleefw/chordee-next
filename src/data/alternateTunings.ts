@@ -48,11 +48,11 @@ export const alternateTunings: AlternateTuningProps = {
   guitalele: {
     name: 'Guitalele Standard A',
     tunings: [
-      { note: musicNotes.A, octave: 4 },
-      { note: musicNotes.D, octave: 4 },
-      { note: musicNotes.G, octave: 4 },
-      { note: musicNotes.C, octave: 5 },
-      { note: musicNotes.E, octave: 5 },
+      { note: musicNotes.A, octave: 3 },
+      { note: musicNotes.D, octave: 3 },
+      { note: musicNotes.G, octave: 3 },
+      { note: musicNotes.C, octave: 4 },
+      { note: musicNotes.E, octave: 4 },
       { note: musicNotes.A, octave: 5 },
     ],
   },

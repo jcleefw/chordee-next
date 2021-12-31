@@ -13,7 +13,7 @@ interface Props {
   tonalKey?: TonalKey
 }
 
-export default ({
+const Board = ({
   noOfStrings,
   noOfFrets,
   boardHeight,
@@ -30,3 +30,5 @@ export default ({
     </>
   )
 }
+
+export default Board

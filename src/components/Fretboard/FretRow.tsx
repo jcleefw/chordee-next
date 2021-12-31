@@ -9,12 +9,12 @@ interface Props {
   noOfStrings: number
 }
 
-const FretsRow = styled.div`
+const Row = styled.div`
   display: flex;
   align-items: center;
 `
 
-export default ({
+const FretRow = ({
   noOfStrings,
   boardHeight,
   children,
@@ -22,8 +22,10 @@ export default ({
   const rowHeight = boardHeight / noOfStrings
 
   return (
-    <FretsRow className={cx('fret-row')} style={{ height: `${rowHeight}px` }}>
+    <Row className={cx('fret-row')} style={{ height: `${rowHeight}px` }}>
       {children}
-    </FretsRow>
+    </Row>
   )
 }
+
+export default FretRow
