@@ -1,6 +1,6 @@
 import { sum, times } from 'lodash'
 import { TuningShape, notesArray, HighlightStatus } from '../types/tuning'
-import { TonalKey } from '../types/tonal'
+import { AnyObject } from 'types/generic'
 
 export const fretWidth = (nrFrets: number) => (pos: number) =>
   ((2 ** (1 / nrFrets) - 1) / 2 ** ((pos + 1) / nrFrets)) * 100 * 2
@@ -49,7 +49,7 @@ const addToArray = (
 export const notesOnStringArray = (props: {
   rootNote: TuningShape
   noFrets: number
-  tonalKey?: TonalKey
+  tonalKey?: AnyObject
 }) => {
   const { rootNote, noFrets, tonalKey } = props
   const rootNoteIndex = notesArray.indexOf(stringifyNote(rootNote))

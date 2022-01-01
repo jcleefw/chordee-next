@@ -6,14 +6,13 @@ import { reverse } from 'lodash'
 import { fretboardHeight } from 'types/enums'
 import Fret from '../Fret'
 import FretRow from '../FretRow'
-import { TonalKey } from 'types/tonal'
+import { AnyObject } from 'types/generic'
+import { useAppContext } from 'src/context/state'
 
 interface Props {
-  tuning: TuningShape[]
   showOctave?: boolean
   boardHeight: fretboardHeight
   noOfStrings: number
-  tonalKey?: TonalKey
 }
 
 const FretsWrapper = styled.div`
@@ -43,7 +42,7 @@ const generateFretRow = (
   boardHeight: number,
   showOctave: boolean,
   noOfStrings: number,
-  tonalKey?: TonalKey
+  tonalKey?: AnyObject
 ) => {
   return tuning.map((_, stringIndex) => {
     const notesArray = notesOnStringArray({
@@ -71,19 +70,18 @@ const generateFretRow = (
 }
 
 const BoardPosition: FC<Props> = ({
-  tuning,
   showOctave = false,
   boardHeight,
   noOfStrings,
-  tonalKey,
 }) => {
-  const reverseTuning = reverse(tuning)
+  const { store } = useAppContext()
+  const reverseTuning = reverse(store.tuning.tunings)
   const stringNotesByRow = generateFretRow(
     reverseTuning,
     boardHeight,
     showOctave,
     noOfStrings,
-    tonalKey
+    store.tuningKey
   )
 
   return (

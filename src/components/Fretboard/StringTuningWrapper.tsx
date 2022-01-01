@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { TuningShape } from 'types/tuning'
 import { reverse } from 'lodash'
 import { stringifyNote } from 'utils/fretboard'
+import { useAppContext } from 'src/context/state'
 
 const TuningDivWrapper = styled.div`
   margin-top: 4px;
@@ -14,7 +15,6 @@ const TuningNotes = styled.div`
   font-weight: bold;
 `
 interface Props {
-  tuning: Array<TuningShape>
   boardHeight: number
 }
 
@@ -25,7 +25,9 @@ const tuningNotes = (tuning: TuningShape[]) => {
   return reverse(stringArray)
 }
 
-const StringTuningWrapper: FC<Props> = ({ tuning, boardHeight }) => {
+const StringTuningWrapper: FC<Props> = ({ boardHeight }) => {
+  const { store } = useAppContext()
+  const tuning = store.tuning.tunings
   const y = boardHeight / tuning.length
   return (
     <foreignObject width="100%" height="100%">
