@@ -3,12 +3,15 @@ import 'styles/frets-global.scss'
 import 'papercss'
 import type { AppProps } from 'next/app'
 import Layout from 'components/Layout'
+import { AppWrapper } from '../context/state'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AppWrapper>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AppWrapper>
   )
 }
 

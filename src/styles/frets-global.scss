@@ -9,48 +9,47 @@ $green: #94e594;
   background: $green;
 }
 
+// TODO fix fret-mark marking coloring
 .fretRow {
   .fret-note.--fret-mark {
-    background: tomato;
+    //   &:not(.highlight):not(.--scale):not(.--root) span {
+    //     background: #eee;
+    //   }
+    //   position: relative;
+    //   z-index: 3;
+    //   &:after,
+    //   &:before {
+    //     content: '';
+    //     position: absolute;
+    //     width: 97.5%;
+    //     height: 50%;
+    //   }
+    // }
 
-    &:not(.highlight):not(.--scale):not(.--root) span {
-      background: #eee;
-    }
-    position: relative;
-    z-index: 3;
-    &:after,
-    &:before {
-      content: '';
-      position: absolute;
-      width: 97.5%;
-      height: 50%;
-    }
-  }
+    // &:first-child,
+    // &:last-child {
+    //   .fret-note.--fret-mark {
+    //     &:not(.highlight):not(.--scale):not(.--root) span {
+    //       background: none;
+    //     }
+    //   }
+    // }
 
-  &:first-child,
-  &:last-child {
-    .fret-note.--fret-mark {
-      &:not(.highlight):not(.--scale):not(.--root) span {
-        background: none;
-      }
-    }
-  }
+    // &:not(:last-child) {
+    //   .fret-note.--fret-mark {
+    //     &:after {
+    //       top: 53%;
+    //       background: #eee;
+    //     }
+    //   }
+    // }
 
-  &:not(:last-child) {
-    .fret-note.--fret-mark {
-      &:after {
-        top: 53%;
-        background: #eee;
-      }
-    }
-  }
-
-  &:not(:first-child) {
-    .fret-note.--fret-mark {
-      &:before {
-        bottom: 53%;
-        background: #eee;
-      }
-    }
+    // &:not(:first-child) {
+    //   .fret-note.--fret-mark {
+    //     &:before {
+    //       bottom: 53%;
+    //       background: #eee;
+    //     }
+    //   }
   }
 }

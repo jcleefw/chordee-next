@@ -23,6 +23,21 @@ export const notesArray = [
   'G#',
 ]
 
+export const notesArrayInFlats = [
+  'A',
+  'B♭',
+  'B',
+  'C',
+  'D♭',
+  'D',
+  'E♭',
+  'E',
+  'F',
+  'G♭',
+  'G',
+  'A♭',
+]
+
 export enum HighlightStatus {
   root = 'root',
   scale = 'scale',
