@@ -3,6 +3,7 @@ import { TuningShape } from 'types/tuning'
 import { stringifyNote } from 'utils/fretboard'
 import styled from 'styled-components'
 import cx from 'classnames'
+import styles from './fretboard.module.scss'
 
 interface Props {
   width: number
@@ -47,14 +48,15 @@ const FretContainer = ({
   index,
 }: Props): ReactElement => {
   const fretString = stringifyNote(note, showOctave)
-
   return (
     <Fret
       className={cx('fret-note', {
         '--highlight': note.highlight,
         '--root': note.highlight === 'root',
         '--scale': note.highlight === 'scale',
-        '--fret-mark': fretMarking.includes(index + 1),
+        [styles.fretMark]: fretMarking.includes(index + 1),
+        [styles.root]: note.highlight === 'root',
+        [styles.scale]: note.highlight === 'scale',
       })}
       style={{ width: `${width}%` }}
       data-note={stringifyNote(note)}

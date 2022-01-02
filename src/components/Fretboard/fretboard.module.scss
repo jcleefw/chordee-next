@@ -1,21 +1,20 @@
 $orange: #ffc47ff7;
 $green: #94e594;
 
-.--root span {
+.root span {
   background: $orange;
 }
 
-.--scale span {
+.scale span {
   background: $green;
 }
 
 .fretRow {
-  .fret-note.--fret-mark {
-    background: tomato;
-
-    &:not(.highlight):not(.--scale):not(.--root) span {
+  .fretMark {
+    &:not(.scale):not(.root) span {
       background: #eee;
     }
+
     position: relative;
     z-index: 3;
     &:after,
@@ -29,15 +28,15 @@ $green: #94e594;
 
   &:first-child,
   &:last-child {
-    .fret-note.--fret-mark {
-      &:not(.highlight):not(.--scale):not(.--root) span {
+    .fretMark {
+      &:not(.scale):not(.root) span {
         background: none;
       }
     }
   }
 
   &:not(:last-child) {
-    .fret-note.--fret-mark {
+    .fretMark {
       &:after {
         top: 53%;
         background: #eee;
@@ -46,7 +45,7 @@ $green: #94e594;
   }
 
   &:not(:first-child) {
-    .fret-note.--fret-mark {
+    .fretMark {
       &:before {
         bottom: 53%;
         background: #eee;

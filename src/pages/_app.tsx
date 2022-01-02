@@ -1,5 +1,4 @@
 import 'styles/globals.scss'
-import 'styles/frets-global.scss'
 import 'papercss'
 import type { AppProps } from 'next/app'
 import Layout from 'components/Layout'
