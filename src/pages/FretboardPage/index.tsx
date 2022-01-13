@@ -9,9 +9,6 @@ import PageHeader from './PageHeader'
 import { useAppContext } from 'src/context/state'
 
 const NO_OF_FRETS = 15
-const NO_OF_STRINGS = 6
-
-const boardHeight = NO_OF_STRINGS * fretboardHeight.large
 const showOctave = false
 
 const ScalesDisplay = styled.div`
@@ -23,6 +20,8 @@ const ScalesDisplay = styled.div`
 
 const FretboardPage: NextPage = () => {
   const { store } = useAppContext()
+  const { noOfStrings } = store.tuning
+  const boardHeight = noOfStrings * fretboardHeight.large
 
   const decorateScaleNotes = (tonalKey: any) => {
     if (tonalKey?.convertedScale) {
@@ -50,7 +49,7 @@ const FretboardPage: NextPage = () => {
       <Section>
         <Fretboard
           boardHeight={boardHeight}
-          noOfStrings={NO_OF_STRINGS}
+          noOfStrings={noOfStrings}
           noOfFrets={NO_OF_FRETS}
           showOctave={showOctave}
         />
