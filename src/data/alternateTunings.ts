@@ -3,6 +3,7 @@ import { AlternateTuningProps, musicNotes } from 'types/tuning'
 export const alternateTunings: AlternateTuningProps = {
   standard: {
     name: 'Standard',
+    noOfStrings: 6,
     tunings: [
       { note: musicNotes.E, octave: 2 },
       { note: musicNotes.A, octave: 2 },
@@ -14,6 +15,7 @@ export const alternateTunings: AlternateTuningProps = {
   },
   dadgad: {
     name: 'DADGAD',
+    noOfStrings: 6,
     tunings: [
       { note: musicNotes.D, octave: 2 },
       { note: musicNotes.A, octave: 2 },
@@ -25,6 +27,7 @@ export const alternateTunings: AlternateTuningProps = {
   },
   openC: {
     name: 'Open C',
+    noOfStrings: 6,
     tunings: [
       { note: musicNotes.C, octave: 2 },
       { note: musicNotes.G, octave: 2 },
@@ -36,6 +39,7 @@ export const alternateTunings: AlternateTuningProps = {
   },
   openD: {
     name: 'Open D',
+    noOfStrings: 6,
     tunings: [
       { note: musicNotes.D, octave: 2 },
       { note: musicNotes.A, octave: 2 },
@@ -47,6 +51,7 @@ export const alternateTunings: AlternateTuningProps = {
   },
   guitalele: {
     name: 'Guitalele Standard A',
+    noOfStrings: 6,
     tunings: [
       { note: musicNotes.A, octave: 3 },
       { note: musicNotes.D, octave: 3 },

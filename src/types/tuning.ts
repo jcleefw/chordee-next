@@ -55,5 +55,6 @@ export interface AlternateTuningProps {
   [x: string]: {
     name: string
     tunings: TuningShape[]
+    noOfStrings: 4 | 5 | 6
   }
 }
