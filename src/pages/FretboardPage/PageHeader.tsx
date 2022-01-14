@@ -65,6 +65,7 @@ const PageHeader: FC = () => {
           defaultValue={tuningOptions[0]}
           className="select"
           id="tuning"
+          instanceId="tuning"
         />
       </FormGroup>
       <FormGroup className="form-group">
@@ -74,6 +75,7 @@ const PageHeader: FC = () => {
           onChange={(e) => onKeyChange(e as OptionType)}
           className="select"
           id="keyMajor"
+          instanceId="keyMajor"
         />
       </FormGroup>
     </Container>
