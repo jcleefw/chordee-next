@@ -8,14 +8,15 @@ import { convertTonalScaleIfNeeded } from 'utils/tonalHelper'
 import { actionsType } from 'store/fretboardReducer'
 import { useAppContext } from 'src/context/state'
 
-const Container = styled.div`
-  margin-bottom: 1rem;
-`
 const FormGroup = styled.div`
   width: 50%;
   &:not(:first-child) {
     padding-left: 0.5rem;
   }
+`
+const FormLabel = styled.label`
+  font-size: 16px;
+  color: green;
 `
 
 type OptionType = {
@@ -56,9 +57,9 @@ const PageHeader: FC = () => {
   }
 
   return (
-    <Container className="flex">
+    <div className="flex">
       <FormGroup className="form-group">
-        <label htmlFor="tuning">Tuning</label>
+        <FormLabel htmlFor="tuning">Tuning</FormLabel>
         <Select
           options={tuningOptions}
           onChange={(e) => onTuningChange(e as OptionType)}
@@ -69,7 +70,7 @@ const PageHeader: FC = () => {
         />
       </FormGroup>
       <FormGroup className="form-group">
-        <label htmlFor="keyMajor">Key</label>
+        <FormLabel htmlFor="keyMajor">Key</FormLabel>
         <Select
           options={musicKey}
           onChange={(e) => onKeyChange(e as OptionType)}
@@ -78,7 +79,7 @@ const PageHeader: FC = () => {
           instanceId="keyMajor"
         />
       </FormGroup>
-    </Container>
+    </div>
   )
 }
 

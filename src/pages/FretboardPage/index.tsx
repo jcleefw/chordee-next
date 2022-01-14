@@ -13,9 +13,12 @@ const NO_OF_FRETS = 15
 const showOctave = false
 
 const ScalesDisplay = styled.div`
-  padding: 1rem 0;
+  margin-bottom: 0.5rem;
   span {
     padding: 0 0.5rem;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 18px;
   }
 `
 
@@ -39,7 +42,6 @@ const FretboardPage: NextPage = () => {
 
   return (
     <PageContainer>
-      <PageHeader />
       <Section>
         {isEmpty(store.tuningKey) ? (
           <ScalesDisplay>
@@ -50,6 +52,7 @@ const FretboardPage: NextPage = () => {
             Notes on scale are: {decorateScaleNotes(store.tuningKey)}
           </ScalesDisplay>
         )}
+        <PageHeader />
       </Section>
       <Section>
         <Fretboard

@@ -10,9 +10,9 @@ export const PageContainer: FC = ({ children }) => {
 interface WrapperProp extends AnyObject {
   children: React.ReactNode
 }
-export const Wrapper = ({ children, height }: WrapperProp) => {
+export const Wrapper = ({ children, style }: WrapperProp) => {
   return (
-    <div className="paper" style={{ height }}>
+    <div className="paper" style={style}>
       {children}
     </div>
   )

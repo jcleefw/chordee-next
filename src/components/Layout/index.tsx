@@ -7,7 +7,7 @@ import Footer from './Footer'
 const Layout: FC = ({ children }) => {
   return (
     <>
-      <Wrapper height="80vh">
+      <Wrapper style={{ height: 'auto', minHeight: '85vh' }}>
         <Header />
         <main className={styles.main}>{children}</main>
       </Wrapper>
