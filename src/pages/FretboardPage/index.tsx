@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { isEmpty } from 'lodash'
 import PageHeader from './PageHeader'
 import { useAppContext } from 'src/context/state'
+import { useHasMounted } from 'utils/pageload'
 
 const NO_OF_FRETS = 15
 const showOctave = false
@@ -29,6 +30,10 @@ const FretboardPage: NextPage = () => {
         <span key={item}>{item}</span>
       ))
     }
+    return null
+  }
+
+  if (!useHasMounted()) {
     return null
   }
 
