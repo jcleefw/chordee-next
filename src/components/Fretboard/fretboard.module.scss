@@ -23,6 +23,10 @@ $green: #94e594;
       position: absolute;
       width: 97.5%;
       height: 50%;
+      @media only screen and (max-width: 768px) {
+        width: 93.5%;
+        height: 66%;
+      }
     }
   }
 

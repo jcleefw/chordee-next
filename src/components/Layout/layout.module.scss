@@ -5,3 +5,14 @@
     margin-top: 80px;
   }
 }
+
+.mobileBar {
+  height: 2px;
+  width: 50%;
+}
+
+.mobileNavButton {
+  &:hover {
+    background-color: #ddd;
+  }
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
+import styles from '../layout.module.scss'
+import cx from 'classnames'
 
 const Header = () => {
   return (
@@ -11,10 +13,10 @@ const Header = () => {
       </div>
       <div className="collapsible">
         <input id="collapsible1" type="checkbox" name="collapsible" />
-        <label htmlFor="collapsible1">
-          <div className="bar1"></div>
-          <div className="bar2"></div>
-          <div className="bar3"></div>
+        <label htmlFor="collapsible1" className={styles.mobileNavButton}>
+          <div className={cx(styles.mobileBar, 'bar1')}></div>
+          <div className={cx(styles.mobileBar, 'bar2')}></div>
+          <div className={cx(styles.mobileBar, 'bar3')}></div>
         </label>
 
         <div className="collapsible-body">

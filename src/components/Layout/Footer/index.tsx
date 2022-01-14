@@ -2,7 +2,11 @@ import { Wrapper } from 'components/atoms/Container'
 import React from 'react'
 import styled from 'styled-components'
 
-const FooterDiv = styled.footer``
+const FooterDiv = styled.footer`
+  @media only screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+`
 
 const Footer = () => {
   return (
