@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { convertTonalScaleIfNeeded } from 'utils/tonalHelper'
 import { actionsType } from 'store/fretboardReducer'
 import { useAppContext } from 'src/context/state'
+import { calculateBoardHeight } from 'utils/fretboard'
 
 const FormGroup = styled.div`
   width: 50%;
@@ -52,7 +53,12 @@ const PageHeader: FC = () => {
   const onTuningChange = (e: OptionType) => {
     dispatch({
       type: actionsType.SET_STATE,
-      updatedState: { tuning: alternateTunings[e.value] },
+      updatedState: {
+        tuning: alternateTunings[e.value],
+        boardHeight: calculateBoardHeight(
+          alternateTunings[e.value].noOfStrings
+        ),
+      },
     })
   }
 

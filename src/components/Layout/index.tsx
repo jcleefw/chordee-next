@@ -4,10 +4,6 @@ import Header from './Header'
 import styles from './layout.module.scss'
 import Footer from './Footer'
 
-interface LayoutProps {
-  children?: React.ReactElement
-}
-
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <>

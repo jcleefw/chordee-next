@@ -1,16 +1,13 @@
 import React from 'react'
 import { NextPage } from 'next'
 import { Section, PageContainer } from 'components/atoms/Container'
-import { fretboardHeight } from 'types/enums'
 import Fretboard from 'components/Fretboard/FretBoard'
 import styled from 'styled-components'
 import { isEmpty } from 'lodash'
 import PageHeader from './PageHeader'
 import { useAppContext } from 'src/context/state'
 import { useHasMounted } from 'utils/pageload'
-
-const NO_OF_FRETS = 15
-const showOctave = false
+import { TuningKeyProp } from 'store/types'
 
 const ScalesDisplay = styled.div`
   margin-bottom: 0.5rem;
@@ -24,10 +21,8 @@ const ScalesDisplay = styled.div`
 
 const FretboardPage: NextPage = () => {
   const { store } = useAppContext()
-  const { noOfStrings } = store.tuning
-  const boardHeight = noOfStrings * fretboardHeight.large
 
-  const decorateScaleNotes = (tonalKey: any) => {
+  const decorateScaleNotes = (tonalKey?: TuningKeyProp) => {
     if (tonalKey?.convertedScale) {
       return tonalKey.convertedScale.map((item: string) => (
         <span key={item}>{item}</span>
@@ -55,12 +50,7 @@ const FretboardPage: NextPage = () => {
         <PageHeader />
       </Section>
       <Section>
-        <Fretboard
-          boardHeight={boardHeight}
-          noOfStrings={noOfStrings}
-          noOfFrets={NO_OF_FRETS}
-          showOctave={showOctave}
-        />
+        <Fretboard boardHeight={store.boardHeight} />
       </Section>
     </PageContainer>
   )

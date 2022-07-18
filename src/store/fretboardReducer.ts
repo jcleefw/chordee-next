@@ -1,16 +1,14 @@
-import { AnyObject } from 'types/generic'
 import { initialState } from './initialState'
+import { ActionProp, ReducerStateProps } from './types'
 
 export enum actionsType {
   SET_STATE,
 }
 
-interface ActionProp {
-  type: actionsType
-  updatedState: AnyObject
-}
-
-export default (state: AnyObject, action: ActionProp) => {
+const stateReducer = (
+  state: ReducerStateProps,
+  action: ActionProp
+): ReducerStateProps => {
   switch (action.type) {
     case actionsType.SET_STATE: {
       return {
@@ -22,3 +20,5 @@ export default (state: AnyObject, action: ActionProp) => {
       return initialState
   }
 }
+
+export default stateReducer
