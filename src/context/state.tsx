@@ -1,4 +1,10 @@
-import React, { FC, createContext, useContext, useReducer } from 'react'
+import React, {
+  FC,
+  createContext,
+  useContext,
+  useReducer,
+  PropsWithChildren,
+} from 'react'
 import { initialState } from 'store/initialState'
 import reducer from 'store/fretboardReducer'
 
@@ -7,7 +13,7 @@ const AppContext = createContext<{ store: any; dispatch: any }>({
   dispatch: undefined,
 })
 
-export const AppWrapper: FC = ({ children }) => {
+export const AppWrapper: FC<PropsWithChildren> = ({ children }) => {
   const [store, dispatch] = useReducer(reducer, initialState)
 
   return (

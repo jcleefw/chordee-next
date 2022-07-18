@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import style from '../atoms.module.scss'
 import cx from 'classnames'
 import { AnyObject } from 'types/generic'
 
-export const PageContainer: FC = ({ children }) => {
+export const PageContainer: FC<React.PropsWithChildren> = ({ children }) => {
   return <div className={cx('container', style.pageContainer)}>{children}</div>
 }
 
@@ -17,10 +17,10 @@ export const Wrapper = ({ children, style }: WrapperProp) => {
     </div>
   )
 }
+interface SectionProps extends PropsWithChildren {
+  className?: string
+}
 
-export const Section: FC<{ className?: string }> = ({
-  children,
-  className,
-}) => {
+export const Section: FC<SectionProps> = ({ children, className }) => {
   return <div className={cx(className, 'section')}>{children}</div>
 }
