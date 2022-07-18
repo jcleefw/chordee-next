@@ -1,13 +1,17 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Wrapper } from 'components/atoms/Container'
 import Header from './Header'
 import styles from './layout.module.scss'
 import Footer from './Footer'
 
-const Layout: FC = ({ children }) => {
+interface LayoutProps {
+  children?: React.ReactElement
+}
+
+const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <Wrapper height="80vh">
+      <Wrapper style={{ height: 'auto', minHeight: '85vh' }}>
         <Header />
         <main className={styles.main}>{children}</main>
       </Wrapper>
