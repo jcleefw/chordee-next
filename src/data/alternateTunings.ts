@@ -61,4 +61,14 @@ export const alternateTunings: AlternateTuningProps = {
       { note: musicNotes.A, octave: 5 },
     ],
   },
+  ukelele: {
+    name: 'Ukelele Standard',
+    noOfStrings: 4,
+    tunings: [
+      { note: musicNotes.G, octave: 4 },
+      { note: musicNotes.C, octave: 4 },
+      { note: musicNotes.E, octave: 4 },
+      { note: musicNotes.A, octave: 4 },
+    ],
+  },
 }

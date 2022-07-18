@@ -1,6 +1,7 @@
 import { sum, times } from 'lodash'
 import { TuningShape, notesArray, HighlightStatus } from '../types/tuning'
 import { AnyObject } from 'types/generic'
+import { fretboardHeight } from 'types/enums'
 
 export const fretWidth = (nrFrets: number) => (pos: number) =>
   ((2 ** (1 / nrFrets) - 1) / 2 ** ((pos + 1) / nrFrets)) * 100 * 2
@@ -76,4 +77,12 @@ export const stringifyNote = (note: TuningShape, showOctave?: boolean) => {
   return `${note.note}${note.sharp ? '#' : ''}${note.flat ? '♭' : ''}${
     showOctave ? note.octave : ''
   }`
+}
+
+export const calculateBoardHeight = (
+  noOfStrings: number,
+  height?: fretboardHeight
+) => {
+  const fHeight = height ?? fretboardHeight.large
+  return noOfStrings * fHeight
 }

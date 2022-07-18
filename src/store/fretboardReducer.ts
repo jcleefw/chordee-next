@@ -10,7 +10,7 @@ interface ActionProp {
   updatedState: AnyObject
 }
 
-export default (state: AnyObject, action: ActionProp) => {
+const stateReducer = (state: AnyObject, action: ActionProp) => {
   switch (action.type) {
     case actionsType.SET_STATE: {
       return {
@@ -22,3 +22,5 @@ export default (state: AnyObject, action: ActionProp) => {
       return initialState
   }
 }
+
+export default stateReducer

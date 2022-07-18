@@ -1,26 +1,18 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { fretboardHeight } from 'types/enums'
 import cx from 'classnames'
 import styles from './fretboard.module.scss'
-
-interface Props {
-  boardHeight: fretboardHeight
-  children?: ReactElement[]
-  noOfStrings: number
-}
+import { useAppContext } from 'src/context/state'
 
 const Row = styled.div`
   display: flex;
   align-items: center;
 `
 
-const FretRow = ({
-  noOfStrings,
-  boardHeight,
-  children,
-}: Props): ReactElement => {
-  const rowHeight = boardHeight / noOfStrings
+const FretRow: FC<React.PropsWithChildren> = ({ children }) => {
+  const { store } = useAppContext()
+  const { noOfStrings } = store.tuning
+  const rowHeight = store.boardHeight / noOfStrings
 
   return (
     <Row

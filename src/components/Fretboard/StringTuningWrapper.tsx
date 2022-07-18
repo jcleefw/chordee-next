@@ -19,9 +19,6 @@ const TuningNotes = styled.div`
     font-size: 12px;
   }
 `
-interface Props {
-  boardHeight: number
-}
 
 const tuningNotes = (tuning: TuningShape[], showOctave: boolean) => {
   const stringArray = tuning.map((row) =>
@@ -30,10 +27,10 @@ const tuningNotes = (tuning: TuningShape[], showOctave: boolean) => {
   return reverse(stringArray)
 }
 
-const StringTuningWrapper: FC<Props> = ({ boardHeight }) => {
+const StringTuningWrapper: FC = () => {
   const { store } = useAppContext()
   const tuning = store.tuning.tunings
-  const y = boardHeight / tuning.length
+  const y = store.boardHeight / tuning.length
   const { width: screenWidth } = useWindowDimensions()
   const showOctave = screenWidth > 768
 

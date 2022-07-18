@@ -1,21 +1,15 @@
 import { alternateTunings } from 'data/alternateTunings'
-import { AnyObject } from 'types/generic'
-import { TuningShape } from 'types/tuning'
+import { fretboardHeight } from 'types/enums'
+import { calculateBoardHeight } from 'utils/fretboard'
+import { InitialStateProps } from './types'
 
-interface TuningKeyProp extends AnyObject {
-  convertedScale: string[]
-}
-
-interface TuningProp {
-  name: string
-  tunings: TuningShape[]
-}
-interface StateProps {
-  tuning?: TuningProp
-  tuningKey?: TuningKeyProp
-}
-
-export const initialState: StateProps = {
+export const initialState: InitialStateProps = {
   tuning: alternateTunings.standard,
   tuningKey: undefined,
+  showOctave: false,
+  noOfFrets: 15,
+  boardHeight: calculateBoardHeight(
+    alternateTunings.standard.noOfStrings,
+    fretboardHeight.large
+  ),
 }

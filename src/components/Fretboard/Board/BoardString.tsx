@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { times, range } from 'lodash'
 import { stringCenter } from 'utils/fretboard'
 import cx from 'classnames'
+import { useAppContext } from 'src/context/state'
 
 const stringLine = (nrOfStrings: number) => (stringIndex: number) => {
   const y = stringCenter(nrOfStrings)(stringIndex)
@@ -39,16 +40,15 @@ const fretLine =
     )
   }
 
-interface Props {
-  nrOfStrings: number
-  nrOfFrets: number
+const BoardString: FC = () => {
+  const { store } = useAppContext()
+  const { noOfStrings } = store.tuning
+  return (
+    <g>
+      {times(noOfStrings, stringLine(noOfStrings))}
+      {range(1, store.noOfFrets).map(fretLine(store.noOfFrets, noOfStrings))}
+    </g>
+  )
 }
-
-const BoardString: FC<Props> = ({ nrOfStrings, nrOfFrets }) => (
-  <g>
-    {times(nrOfStrings, stringLine(nrOfStrings))}
-    {range(1, nrOfFrets).map(fretLine(nrOfFrets, nrOfStrings))}
-  </g>
-)
 
 export default BoardString
