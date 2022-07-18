@@ -7,10 +7,14 @@ import React, {
 } from 'react'
 import { initialState } from 'store/initialState'
 import reducer from 'store/fretboardReducer'
+import { ActionProp, ReducerStateProps } from 'store/types'
 
-const AppContext = createContext<{ store: any; dispatch: any }>({
-  store: {},
-  dispatch: undefined,
+const AppContext = createContext<{
+  store: ReducerStateProps
+  dispatch: React.Dispatch<ActionProp | any>
+}>({
+  store: initialState,
+  dispatch: () => null,
 })
 
 export const AppWrapper: FC<PropsWithChildren> = ({ children }) => {

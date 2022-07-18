@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { TuningShape } from 'types/tuning'
+import { HighlightStatus, TuningShape } from 'types/tuning'
 import { stringifyNote } from 'utils/fretboard'
 import styled from 'styled-components'
 import cx from 'classnames'
@@ -13,7 +13,7 @@ interface Props {
 }
 
 type FretProp = {
-  highlight: any
+  highlight: HighlightStatus | null | undefined
 }
 
 const Fret = styled.div<FretProp>`

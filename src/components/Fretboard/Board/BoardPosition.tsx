@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { reverse } from 'lodash'
 import Fret from '../Fret'
 import FretRow from '../FretRow'
-import { AnyObject } from 'types/generic'
 import { useAppContext } from 'src/context/state'
+import { ReducerStateProps } from 'store/types'
 
 const FretsWrapper = styled.div`
   display: flex;
@@ -17,36 +17,32 @@ const generatFretNotes = (
   notesArray: TuningShape[],
   width: number,
   stringIndex: number,
-  showOctave: boolean
+  showOctave?: boolean
 ) => {
   return notesArray.map((note, index) => (
     <Fret
       width={width}
       note={note}
       key={`note-${stringIndex}-${index}`}
-      showOctave={showOctave}
+      showOctave={showOctave ?? false}
       index={index}
     />
   ))
 }
 
-const generateFretRow = (
-  tuning: TuningShape[],
-  showOctave: boolean,
-  tonalKey?: AnyObject
-) => {
+const generateFretRow = (tuning: TuningShape[], store: ReducerStateProps) => {
   return tuning.map((_, stringIndex) => {
     const notesArray = notesOnStringArray({
       rootNote: tuning[stringIndex],
       noFrets: 15,
-      tonalKey: tonalKey,
+      tonalKey: store.tuningKey,
     })
     const width = 100 / tuning.length
     const fretNotes = generatFretNotes(
       notesArray,
       width,
       stringIndex,
-      showOctave
+      store.showOctave
     )
     return <FretRow key={`row-${stringIndex}`}>{fretNotes}</FretRow>
   })
@@ -55,11 +51,7 @@ const generateFretRow = (
 const BoardPosition: FC = () => {
   const { store } = useAppContext()
   const reverseTuning = reverse(store.tuning.tunings)
-  const stringNotesByRow = generateFretRow(
-    reverseTuning,
-    store.showOctave,
-    store.tuningKey
-  )
+  const stringNotesByRow = generateFretRow(reverseTuning, store)
 
   return (
     <foreignObject width="100%" height="100%">

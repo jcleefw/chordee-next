@@ -6,7 +6,7 @@ import SvgWrapper from './SvgWrapper'
 import Board from './Board'
 
 interface Props {
-  boardHeight: number
+  boardHeight?: number
 }
 
 const FretBoard: FC<Props> = ({ boardHeight }) => {

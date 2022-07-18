@@ -1,3 +1,5 @@
+import { TuningProp } from 'store/types'
+
 export enum musicNotes {
   C = 'C',
   D = 'D',
@@ -52,9 +54,5 @@ export interface TuningShape {
 }
 
 export interface AlternateTuningProps {
-  [x: string]: {
-    name: string
-    tunings: TuningShape[]
-    noOfStrings: 4 | 5 | 6
-  }
+  [x: string]: TuningProp
 }

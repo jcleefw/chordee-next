@@ -1,19 +1,26 @@
 import { AnyObject } from 'types/generic'
 import { TuningShape } from 'types/tuning'
+import { actionsType } from './fretboardReducer'
 
-interface TuningKeyProp extends AnyObject {
+export interface ActionProp {
+  type: actionsType
+  updatedState: ReducerStateProps
+}
+
+export interface TuningKeyProp extends AnyObject {
   convertedScale: string[]
 }
 
-interface TuningProp {
+export interface TuningProp {
   name: string
   tunings: TuningShape[]
+  noOfStrings: 4 | 5 | 6
 }
 
-export interface InitialStateProps {
-  tuning?: TuningProp
+export interface ReducerStateProps {
+  tuning: TuningProp
   tuningKey?: TuningKeyProp
-  showOctave?: boolean
-  noOfFrets?: number
-  boardHeight?: number
+  showOctave: boolean
+  noOfFrets: number
+  boardHeight: number
 }

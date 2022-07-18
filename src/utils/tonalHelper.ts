@@ -1,6 +1,6 @@
 import { notesArray } from 'types/tuning'
 
-export const convertTonalScaleIfNeeded = (scale: any) => {
+export const convertTonalScaleIfNeeded = (scale: readonly string[]) => {
   if (scale) {
     const convertedScale = scale.map((note: string) => {
       // when no conversion needed

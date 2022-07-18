@@ -1,9 +1,9 @@
 import { alternateTunings } from 'data/alternateTunings'
 import { fretboardHeight } from 'types/enums'
 import { calculateBoardHeight } from 'utils/fretboard'
-import { InitialStateProps } from './types'
+import { ReducerStateProps } from './types'
 
-export const initialState: InitialStateProps = {
+export const initialState: ReducerStateProps = {
   tuning: alternateTunings.standard,
   tuningKey: undefined,
   showOctave: false,

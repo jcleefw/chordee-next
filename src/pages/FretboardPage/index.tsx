@@ -7,6 +7,7 @@ import { isEmpty } from 'lodash'
 import PageHeader from './PageHeader'
 import { useAppContext } from 'src/context/state'
 import { useHasMounted } from 'utils/pageload'
+import { TuningKeyProp } from 'store/types'
 
 const ScalesDisplay = styled.div`
   margin-bottom: 0.5rem;
@@ -21,7 +22,7 @@ const ScalesDisplay = styled.div`
 const FretboardPage: NextPage = () => {
   const { store } = useAppContext()
 
-  const decorateScaleNotes = (tonalKey: any) => {
+  const decorateScaleNotes = (tonalKey?: TuningKeyProp) => {
     if (tonalKey?.convertedScale) {
       return tonalKey.convertedScale.map((item: string) => (
         <span key={item}>{item}</span>

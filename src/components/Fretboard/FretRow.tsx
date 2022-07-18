@@ -1,17 +1,20 @@
-import React, { FC } from 'react'
+import React, { PropsWithChildren, ReactElement } from 'react'
 import styled from 'styled-components'
 import cx from 'classnames'
 import styles from './fretboard.module.scss'
 import { useAppContext } from 'src/context/state'
+
+interface Props extends PropsWithChildren {}
 
 const Row = styled.div`
   display: flex;
   align-items: center;
 `
 
-const FretRow: FC<React.PropsWithChildren> = ({ children }) => {
+const FretRow = ({ children }: Props): ReactElement => {
   const { store } = useAppContext()
   const { noOfStrings } = store.tuning
+
   const rowHeight = store.boardHeight / noOfStrings
 
   return (

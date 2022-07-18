@@ -6,17 +6,17 @@ import { fretboardHeight } from 'types/enums'
 export const fretWidth = (nrFrets: number) => (pos: number) =>
   ((2 ** (1 / nrFrets) - 1) / 2 ** ((pos + 1) / nrFrets)) * 100 * 2
 
-export const fretOffset = (nrFrets: any) => (pos: any) => {
+export const fretOffset = (nrFrets: number) => (pos: number) => {
   // (1 - (1 / (2 ** (pos / nrFrets)))) * 100 * 2
   return sum(times(pos, fretWidth(nrFrets)))
 }
 
 export const stringHeight = (nrOfStrings: number) => 100 / nrOfStrings
 
-export const stringOffset = (nrOfStrings: any) => (str: number) =>
+export const stringOffset = (nrOfStrings: number) => (str: number) =>
   str * stringHeight(nrOfStrings)
 
-export const stringCenter = (nrOfStrings: any) => (str: any) =>
+export const stringCenter = (nrOfStrings: number) => (str: number) =>
   stringOffset(nrOfStrings)(str) + stringHeight(nrOfStrings) / 2
 
 export const populateHighlightStatus = (
