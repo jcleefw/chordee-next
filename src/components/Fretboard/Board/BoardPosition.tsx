@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { TuningShape } from 'types/tuning'
 import { notesOnStringArray } from 'utils/fretboard'
 import styled from 'styled-components'
-import { reverse } from 'lodash'
 import Fret from '../Fret'
 import FretRow from '../FretRow'
 import { useAppContext } from 'src/context/state'
@@ -50,7 +49,8 @@ const generateFretRow = (tuning: TuningShape[], store: ReducerStateProps) => {
 
 const BoardPosition: FC = () => {
   const { store } = useAppContext()
-  const reverseTuning = reverse(store.tuning.tunings)
+  const reverseTuning = store.tuning.tunings.slice().reverse()
+
   const stringNotesByRow = generateFretRow(reverseTuning, store)
 
   return (
