@@ -43,6 +43,7 @@ export const notesArrayInFlats = [
 export enum HighlightStatus {
   root = 'root',
   scale = 'scale',
+  triad = 'triad',
 }
 
 export interface TuningShape {

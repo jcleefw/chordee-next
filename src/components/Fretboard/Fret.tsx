@@ -80,6 +80,7 @@ const FretContainer = ({
         [styles.fretMark]: fretMarking.includes(index + 1),
         [styles.root]: note.highlight === 'root',
         [styles.scale]: note.highlight === 'scale',
+        [styles.triad]: note.highlight === 'triad',
       })}
       style={{ width: `${width}%` }}
       data-note={stringifyNote(note)}

@@ -21,9 +21,12 @@ export const stringCenter = (nrOfStrings: number) => (str: number) =>
 
 export const populateHighlightStatus = (
   scale: Array<string>,
-  currentNote: string
+  currentNote: string,
+  selectedTriad?: string
 ) => {
+  // find the position of note in the scale
   const indexOfNote = scale?.indexOf(currentNote.toUpperCase())
+
   if (indexOfNote === 0) {
     return HighlightStatus.root
   } else if (indexOfNote > 0) {
@@ -51,6 +54,7 @@ export const notesOnStringArray = (props: {
   rootNote: TuningShape
   noFrets: number
   tonalKey?: AnyObject
+  triads?: string[]
 }) => {
   const { rootNote, noFrets, tonalKey } = props
   const rootNoteIndex = notesArray.indexOf(stringifyNote(rootNote))
