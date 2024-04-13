@@ -40,6 +40,7 @@ const PageHeader: FC = () => {
 
   const onKeyChange = (e: OptionType) => {
     const tonalKey = Key.majorKey(e.value)
+    console.log('tonalKey')
     dispatch({
       updatedState: {
         tuningKey: {

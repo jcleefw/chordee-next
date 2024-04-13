@@ -35,6 +35,7 @@ const generateFretRow = (tuning: TuningShape[], store: ReducerStateProps) => {
       rootNote: tuning[stringIndex],
       noFrets: 15,
       tonalKey: store.tuningKey,
+      selectedTriadNotes: store.selectedTriadNotes,
     })
     const width = 100 / tuning.length
     const fretNotes = generatFretNotes(

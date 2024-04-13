@@ -25,6 +25,7 @@ type TriadRowProp = {
 export const TriadRow = ({ triadTonic, noteIndexInTriad }: TriadRowProp) => {
   const { dispatch } = useAppContext()
 
+  // TODO needs to handle double sharp notes
   const triads = Chord.degrees(triadTonic)
   const inversions = [1, 2, 3]
   const triadsNotes = inversions.map(triads)

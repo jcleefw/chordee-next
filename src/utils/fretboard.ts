@@ -19,10 +19,9 @@ export const stringOffset = (nrOfStrings: number) => (str: number) =>
 export const stringCenter = (nrOfStrings: number) => (str: number) =>
   stringOffset(nrOfStrings)(str) + stringHeight(nrOfStrings) / 2
 
-export const populateHighlightStatus = (
+export const populateHighlightStatusForScale = (
   scale: Array<string>,
-  currentNote: string,
-  selectedTriad?: string
+  currentNote: string
 ) => {
   // find the position of note in the scale
   const indexOfNote = scale?.indexOf(currentNote.toUpperCase())
@@ -46,7 +45,7 @@ const addToArray = (
   return {
     note: currentNote,
     octave: octaveCount,
-    highlight: populateHighlightStatus(tonalScale, currentNote),
+    highlight: populateHighlightStatusForScale(tonalScale, currentNote),
   }
 }
 
@@ -54,18 +53,21 @@ export const notesOnStringArray = (props: {
   rootNote: TuningShape
   noFrets: number
   tonalKey?: AnyObject
-  triads?: string[]
+  selectedTriadNotes?: string[]
 }) => {
-  const { rootNote, noFrets, tonalKey } = props
+  const { rootNote, noFrets, tonalKey, selectedTriadNotes } = props
   const rootNoteIndex = notesArray.indexOf(stringifyNote(rootNote))
   const tonalScale = tonalKey?.convertedScale
+  const tonalArray = selectedTriadNotes?.length
+    ? selectedTriadNotes
+    : tonalScale
 
   let startIndex = rootNoteIndex + 1
   let octaveCount = rootNote.octave
   let finalArray: TuningShape[] = []
 
   times(noFrets, () => {
-    finalArray.push(addToArray(startIndex, octaveCount, tonalScale))
+    finalArray.push(addToArray(startIndex, octaveCount, tonalArray))
     if (startIndex < 12 - 1) {
       startIndex += 1
     } else {

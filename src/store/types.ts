@@ -23,4 +23,5 @@ export interface ReducerStateProps {
   showOctave: boolean
   noOfFrets: number
   boardHeight: number
+  selectedTriadNotes?: string[]
 }
