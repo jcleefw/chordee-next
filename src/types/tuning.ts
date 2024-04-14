@@ -27,17 +27,17 @@ export const notesArray = [
 
 export const notesArrayInFlats = [
   'A',
-  'B♭',
+  'Bb',
   'B',
   'C',
-  'D♭',
+  'Db',
   'D',
-  'E♭',
+  'Eb',
   'E',
   'F',
-  'G♭',
+  'Gb',
   'G',
-  'A♭',
+  'Ab',
 ]
 
 export enum HighlightStatus {

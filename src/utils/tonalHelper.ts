@@ -28,16 +28,16 @@ export const convertTonalScaleIfNeeded = (scale: MajorKey['scale']) => {
         const searchIndex = (firstNoteIndex + 1) % notesArray.length
         return notesArray[searchIndex]
 
-        // when  scale has double sharps, it will need further conversion
+      // when  scale has double sharps, it will need further conversion
       } else if (splitArray.length === 3) {
         // remove the last `#` from the note.
         firstNoteIndex = tuningSharpsArray.indexOf(
           splitArray.splice(0, 2).join('')
         )
         const searchIndex = (firstNoteIndex + 1) % notesArray.length
-        debugger
         return notesArray[searchIndex]
       }
+      
 
       return null
     })
