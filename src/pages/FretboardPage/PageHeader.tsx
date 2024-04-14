@@ -1,6 +1,6 @@
 import { Key } from '@tonaljs/tonal'
 import { alternateTunings } from 'data/alternateTunings'
-import { AlternateTuningProps, notesArray } from 'types/tuning'
+import { AlternateTuningProps, notesArray, notesArrayInFlats } from 'types/tuning'
 import React, { FC } from 'react'
 import Select from 'react-select'
 import styled from 'styled-components'
@@ -33,18 +33,23 @@ const generateOptions = (tuningOptions: AlternateTuningProps): OptionType[] => {
 
 const PageHeader: FC = () => {
   const tuningOptions = generateOptions(alternateTunings)
-  const musicKey = notesArray.map((note: string) => {
-    return { value: note, label: note.toUpperCase() }
+  const musicKey = notesArray.map((note: string, index: number) => {
+    if (note.includes('#')) {
+      
+    }
+    return { value: note, label: (note.includes('#') ? notesArrayInFlats[index] : note) }
   })
   const { dispatch } = useAppContext()
 
   const onKeyChange = (e: OptionType) => {
     const tonalKey = Key.majorKey(e.value)
-    console.log('tonalKey')
+    const tonicIndexInTuningArr = notesArray.findIndex((el) => el === tonalKey.tonic)
+
     dispatch({
       updatedState: {
         tuningKey: {
           ...tonalKey,
+          tonalKeyInFlat: notesArrayInFlats[tonicIndexInTuningArr],
           convertedScale: convertTonalScaleIfNeeded(tonalKey.scale),
         },
       },

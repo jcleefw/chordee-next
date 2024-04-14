@@ -1,2 +1,3 @@
 ## TODOS reminder
-- [ ] triad notes need to be converted. Need to handle double sharp notes
+- [ ] fretboard highlighting is incorrect now because the scale passed in has flats which it
+      doesn't recognize

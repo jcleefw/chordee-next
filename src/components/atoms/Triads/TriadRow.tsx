@@ -3,6 +3,7 @@ import { TriadNotes } from './TriadNotes'
 import { useAppContext } from 'src/context/state'
 import { actionsType } from 'store/fretboardReducer'
 import { Chord } from '@tonaljs/tonal'
+import { convertTonalScaleIfNeeded } from 'utils/tonalHelper'
 
 const ChordLabel = styled.td`
   padding-right: 1rem;
@@ -19,32 +20,34 @@ const Row = styled.tr`
 `
 type TriadRowProp = {
   triadTonic: string
-  noteIndexInTriad: number
+  noteIndexInScale: number
 }
 
-export const TriadRow = ({ triadTonic, noteIndexInTriad }: TriadRowProp) => {
-  const { dispatch } = useAppContext()
+export const TriadRow = ({ triadTonic, noteIndexInScale }: TriadRowProp) => {
+  const { dispatch, store } = useAppContext()
 
   // TODO needs to handle double sharp notes
   const triads = Chord.degrees(triadTonic)
   const inversions = [1, 2, 3]
   const triadsNotes = inversions.map(triads)
+  const convertedTriadNotes = convertTonalScaleIfNeeded(triadsNotes)
+
+  const scale = store.tuningKey?.convertedScale
 
   const onTriadSelect = () => {
-    console.log('onTriadSelect', triadsNotes)
     dispatch({
       type: actionsType.SET_STATE,
       updatedState: {
-        selectedTriadNotes: triadsNotes,
+        selectedTriadNotes: convertedTriadNotes,
       },
     })
   }
   return (
     <Row key={`triad-chors-${triadTonic}`} onClick={onTriadSelect}>
       <ChordLabel>
-        {triadTonic} <ChordPos>({noteIndexInTriad + 1})</ChordPos>
+        {scale ? scale[noteIndexInScale] : triadTonic} <ChordPos>({noteIndexInScale + 1})</ChordPos>
       </ChordLabel>
-      <TriadNotes notes={triadsNotes} />
+      <TriadNotes notes={convertedTriadNotes} />
     </Row>
   )
 }

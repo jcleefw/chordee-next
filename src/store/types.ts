@@ -9,6 +9,7 @@ export interface ActionProp {
 
 export interface TuningKeyProp extends AnyObject {
   convertedScale: string[]
+  tonalKeyInFlat?: string
 }
 
 export interface TuningProp {

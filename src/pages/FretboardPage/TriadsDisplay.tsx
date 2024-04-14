@@ -11,7 +11,7 @@ const TriadDisplay = ({ scales }: { scales: string[] }) => {
               <TriadRow
                 key={`scale-note-${index}`}
                 triadTonic={scaleNotes}
-                noteIndexInTriad={index}
+                noteIndexInScale={index}
               />
             )
           })}

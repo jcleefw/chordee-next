@@ -36,6 +36,10 @@ const FretboardPage: NextPage = () => {
     return null
   }
 
+  const tonic = store.tuningKey?.tonic.includes('#')
+    ? store.tuningKey?.tonalKeyInFlat
+    : store.tuningKey?.tonic
+
   return (
     <PageContainer>
       <Section>
@@ -45,7 +49,7 @@ const FretboardPage: NextPage = () => {
           </ScalesDisplay>
         ) : (
           <ScalesDisplay>
-            Notes on {store.tuningKey.tonic} {store.tuningKey.type} scale are:{' '}
+            Notes on {tonic} {store.tuningKey.type} scale are:{' '}
             {decorateScaleNotes(store.tuningKey)}
           </ScalesDisplay>
         )}
