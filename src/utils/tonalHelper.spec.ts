@@ -1,4 +1,3 @@
-import { MajorKey } from '@tonaljs/key'
 import { convertTonalScaleIfNeeded } from './tonalHelper'
 
 describe('convertTonalScaleIfNeeded', () => {
