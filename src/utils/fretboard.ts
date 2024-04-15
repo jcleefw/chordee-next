@@ -9,6 +9,7 @@ import {
 import { AnyObject } from 'types/generic'
 import { fretboardHeight } from 'types/enums'
 
+/** Fret display functions */
 export const fretWidth = (nrFrets: number) => (pos: number) =>
   ((2 ** (1 / nrFrets) - 1) / 2 ** ((pos + 1) / nrFrets)) * 100 * 2
 
@@ -17,6 +18,7 @@ export const fretOffset = (nrFrets: number) => (pos: number) => {
   return sum(times(pos, fretWidth(nrFrets)))
 }
 
+/** string display functions */
 export const stringHeight = (nrOfStrings: number) => 100 / nrOfStrings
 
 export const stringOffset = (nrOfStrings: number) => (str: number) =>

@@ -4,6 +4,19 @@ import {
   notesArrayInFlats as tuningFlatsArray,
 } from 'types/tuning'
 
+/**
+ * Scales generated from tonaljs are in sharps. Sometimes it outputs double sharps
+ * to represents the proper scale degrees.
+ * However the notes are not in the tuning array.
+ *
+ * This function aims to
+ * 1. Convert sharp notes to flat notes if the scale starts with flats
+ * 2. Convert double sharps to mapped notes in the tuning array
+ * 3. Return null for notes not in the tuning array
+ *
+ * @param scale
+ * @returns
+ */
 export const convertTonalScaleIfNeeded = (scale: MajorKey['scale']) => {
   let useFlats: boolean
 
@@ -28,7 +41,7 @@ export const convertTonalScaleIfNeeded = (scale: MajorKey['scale']) => {
         const searchIndex = (firstNoteIndex + 1) % notesArray.length
         return notesArray[searchIndex]
 
-      // when  scale has double sharps, it will need further conversion
+        // when  scale has double sharps, it will need further conversion
       } else if (splitArray.length === 3) {
         // remove the last `#` from the note.
         firstNoteIndex = tuningSharpsArray.indexOf(
@@ -37,7 +50,6 @@ export const convertTonalScaleIfNeeded = (scale: MajorKey['scale']) => {
         const searchIndex = (firstNoteIndex + 1) % notesArray.length
         return notesArray[searchIndex]
       }
-      
 
       return null
     })

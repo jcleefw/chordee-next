@@ -1,4 +1,4 @@
-import { convertTonalScaleIfNeeded } from './tonalHelper'
+import { convertTonalScaleIfNeeded } from './tonalScaleConverter'
 
 describe('convertTonalScaleIfNeeded', () => {
   it('should return the same scale if no conversion is needed', () => {
@@ -19,7 +19,6 @@ describe('convertTonalScaleIfNeeded', () => {
     expect(result).toEqual(['B♭', 'C', 'D', 'E♭', 'F', 'G', 'A'])
   })
 
-  // TODO: what should I do in this situation?
   it('should return null for notes not in the tuning arrays', () => {
     const scale = ['H', 'I', 'J', 'K', 'L', 'M', 'N']
     const result = convertTonalScaleIfNeeded(scale)

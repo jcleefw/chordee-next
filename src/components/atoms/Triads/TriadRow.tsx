@@ -3,7 +3,7 @@ import { TriadNotes } from './TriadNotes'
 import { useAppContext } from 'src/context/state'
 import { actionsType } from 'store/fretboardReducer'
 import { Chord } from '@tonaljs/tonal'
-import { convertTonalScaleIfNeeded } from 'utils/tonalHelper'
+import { convertTonalScaleIfNeeded } from 'utils/tonalScaleConverter'
 
 const ChordLabel = styled.td`
   padding-right: 1rem;
@@ -26,7 +26,6 @@ type TriadRowProp = {
 export const TriadRow = ({ triadTonic, noteIndexInScale }: TriadRowProp) => {
   const { dispatch, store } = useAppContext()
 
-  // TODO needs to handle double sharp notes
   const triads = Chord.degrees(triadTonic)
   const inversions = [1, 2, 3]
   const triadsNotes = inversions.map(triads)
@@ -45,7 +44,8 @@ export const TriadRow = ({ triadTonic, noteIndexInScale }: TriadRowProp) => {
   return (
     <Row key={`triad-chors-${triadTonic}`} onClick={onTriadSelect}>
       <ChordLabel>
-        {scale ? scale[noteIndexInScale] : triadTonic} <ChordPos>({noteIndexInScale + 1})</ChordPos>
+        {scale ? scale[noteIndexInScale] : triadTonic}{' '}
+        <ChordPos>({noteIndexInScale + 1})</ChordPos>
       </ChordLabel>
       <TriadNotes notes={convertedTriadNotes} />
     </Row>
