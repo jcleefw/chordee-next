@@ -1,5 +1,11 @@
 import { sum, times } from 'lodash'
-import { TuningShape, notesArray, HighlightStatus } from '../types/tuning'
+import {
+  TuningShape,
+  notesArray,
+  HighlightStatus,
+  mapSharpToFlat,
+  mapFlatToSharp,
+} from '../types/tuning'
 import { AnyObject } from 'types/generic'
 import { fretboardHeight } from 'types/enums'
 
@@ -23,9 +29,17 @@ export const populateHighlightStatusForScale = (
   scale: Array<string>,
   currentNote: string
 ) => {
-  // find the position of note in the scale
-  const indexOfNote = scale?.indexOf(currentNote.toUpperCase())
+  let noteInScaleForm: string
 
+  // Only converts sharp notes to flat notes when the scale has flats
+  if (currentNote.includes('#')) {
+    noteInScaleForm = mapSharpToFlat.get(currentNote) ?? currentNote
+  } else {
+    noteInScaleForm = currentNote
+  }
+
+  // find the position of note in the scale
+  const indexOfNote = scale?.indexOf(noteInScaleForm)
   if (indexOfNote === 0) {
     return HighlightStatus.root
   } else if (indexOfNote > 0) {

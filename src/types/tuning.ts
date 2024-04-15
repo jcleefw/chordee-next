@@ -27,18 +27,34 @@ export const notesArray = [
 
 export const notesArrayInFlats = [
   'A',
-  'Bb',
+  'B♭',
   'B',
   'C',
-  'Db',
+  'D♭',
   'D',
-  'Eb',
+  'E♭',
   'E',
   'F',
-  'Gb',
+  'G♭',
   'G',
-  'Ab',
+  'A♭',
 ]
+
+export const mapFlatToSharp = new Map([
+  ['A♭', 'G#'],
+  ['B♭', 'A#'],
+  ['D♭', 'C#'],
+  ['E♭', 'D#'],
+  ['G♭', 'F#'],
+])
+
+export const mapSharpToFlat = new Map([
+  ['G#', 'A♭'],
+  ['A#', 'B♭'],
+  ['C#', 'D♭'],
+  ['D#', 'E♭'],
+  ['F#', 'G♭'],
+])
 
 export enum HighlightStatus {
   root = 'root',
