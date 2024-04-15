@@ -1,8 +1,15 @@
 import { sum, times } from 'lodash'
-import { TuningShape, notesArray, HighlightStatus } from '../types/tuning'
+import {
+  TuningShape,
+  notesArray,
+  HighlightStatus,
+  mapSharpToFlat,
+  mapFlatToSharp,
+} from '../types/tuning'
 import { AnyObject } from 'types/generic'
 import { fretboardHeight } from 'types/enums'
 
+/** Fret display functions */
 export const fretWidth = (nrFrets: number) => (pos: number) =>
   ((2 ** (1 / nrFrets) - 1) / 2 ** ((pos + 1) / nrFrets)) * 100 * 2
 
@@ -11,6 +18,7 @@ export const fretOffset = (nrFrets: number) => (pos: number) => {
   return sum(times(pos, fretWidth(nrFrets)))
 }
 
+/** string display functions */
 export const stringHeight = (nrOfStrings: number) => 100 / nrOfStrings
 
 export const stringOffset = (nrOfStrings: number) => (str: number) =>
@@ -19,11 +27,21 @@ export const stringOffset = (nrOfStrings: number) => (str: number) =>
 export const stringCenter = (nrOfStrings: number) => (str: number) =>
   stringOffset(nrOfStrings)(str) + stringHeight(nrOfStrings) / 2
 
-export const populateHighlightStatus = (
+export const populateHighlightStatusForScale = (
   scale: Array<string>,
   currentNote: string
 ) => {
-  const indexOfNote = scale?.indexOf(currentNote.toUpperCase())
+  let noteInScaleForm: string
+
+  // Only converts sharp notes to flat notes when the scale has flats
+  if (currentNote.includes('#')) {
+    noteInScaleForm = mapSharpToFlat.get(currentNote) ?? currentNote
+  } else {
+    noteInScaleForm = currentNote
+  }
+
+  // find the position of note in the scale
+  const indexOfNote = scale?.indexOf(noteInScaleForm)
   if (indexOfNote === 0) {
     return HighlightStatus.root
   } else if (indexOfNote > 0) {
@@ -43,7 +61,7 @@ const addToArray = (
   return {
     note: currentNote,
     octave: octaveCount,
-    highlight: populateHighlightStatus(tonalScale, currentNote),
+    highlight: populateHighlightStatusForScale(tonalScale, currentNote),
   }
 }
 
@@ -51,17 +69,21 @@ export const notesOnStringArray = (props: {
   rootNote: TuningShape
   noFrets: number
   tonalKey?: AnyObject
+  selectedTriadNotes?: string[]
 }) => {
-  const { rootNote, noFrets, tonalKey } = props
+  const { rootNote, noFrets, tonalKey, selectedTriadNotes } = props
   const rootNoteIndex = notesArray.indexOf(stringifyNote(rootNote))
   const tonalScale = tonalKey?.convertedScale
+  const tonalArray = selectedTriadNotes?.length
+    ? selectedTriadNotes
+    : tonalScale
 
   let startIndex = rootNoteIndex + 1
   let octaveCount = rootNote.octave
   let finalArray: TuningShape[] = []
 
   times(noFrets, () => {
-    finalArray.push(addToArray(startIndex, octaveCount, tonalScale))
+    finalArray.push(addToArray(startIndex, octaveCount, tonalArray))
     if (startIndex < 12 - 1) {
       startIndex += 1
     } else {

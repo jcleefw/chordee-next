@@ -9,6 +9,7 @@ export interface ActionProp {
 
 export interface TuningKeyProp extends AnyObject {
   convertedScale: string[]
+  tonalKeyInFlat?: string
 }
 
 export interface TuningProp {
@@ -23,4 +24,5 @@ export interface ReducerStateProps {
   showOctave: boolean
   noOfFrets: number
   boardHeight: number
+  selectedTriadNotes?: string[]
 }

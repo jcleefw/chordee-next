@@ -40,9 +40,26 @@ export const notesArrayInFlats = [
   'A♭',
 ]
 
+export const mapFlatToSharp = new Map([
+  ['A♭', 'G#'],
+  ['B♭', 'A#'],
+  ['D♭', 'C#'],
+  ['E♭', 'D#'],
+  ['G♭', 'F#'],
+])
+
+export const mapSharpToFlat = new Map([
+  ['G#', 'A♭'],
+  ['A#', 'B♭'],
+  ['C#', 'D♭'],
+  ['D#', 'E♭'],
+  ['F#', 'G♭'],
+])
+
 export enum HighlightStatus {
   root = 'root',
   scale = 'scale',
+  triad = 'triad',
 }
 
 export interface TuningShape {

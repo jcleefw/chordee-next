@@ -8,6 +8,7 @@ import PageHeader from './PageHeader'
 import { useAppContext } from 'src/context/state'
 import { useHasMounted } from 'utils/pageload'
 import { TuningKeyProp } from 'store/types'
+import TriadDisplay from './TriadsDisplay'
 
 const ScalesDisplay = styled.div`
   margin-bottom: 0.5rem;
@@ -35,6 +36,10 @@ const FretboardPage: NextPage = () => {
     return null
   }
 
+  const tonic = store.tuningKey?.tonic.includes('#')
+    ? store.tuningKey?.tonalKeyInFlat
+    : store.tuningKey?.tonic
+
   return (
     <PageContainer>
       <Section>
@@ -44,7 +49,8 @@ const FretboardPage: NextPage = () => {
           </ScalesDisplay>
         ) : (
           <ScalesDisplay>
-            Notes on scale are: {decorateScaleNotes(store.tuningKey)}
+            Notes on {tonic} {store.tuningKey.type} scale are:{' '}
+            {decorateScaleNotes(store.tuningKey)}
           </ScalesDisplay>
         )}
         <PageHeader />
@@ -52,6 +58,11 @@ const FretboardPage: NextPage = () => {
       <Section>
         <Fretboard boardHeight={store.boardHeight} />
       </Section>
+      {!isEmpty(store.tuningKey) && (
+        <Section>
+          <TriadDisplay scales={store.tuningKey.triads} />
+        </Section>
+      )}
     </PageContainer>
   )
 }

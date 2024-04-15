@@ -25,6 +25,18 @@ export const alternateTunings: AlternateTuningProps = {
       { note: musicNotes.D, octave: 4 },
     ],
   },
+  openCAlt: {
+    name: 'Open C (151351)',
+    noOfStrings: 6,
+    tunings: [
+      { note: musicNotes.C, octave: 2 },
+      { note: musicNotes.G, octave: 2 },
+      { note: musicNotes.C, octave: 3 },
+      { note: musicNotes.E, octave: 3 },
+      { note: musicNotes.G, octave: 3 },
+      { note: musicNotes.C, octave: 4 },
+    ],
+  },
   openC: {
     name: 'Open C',
     noOfStrings: 6,
